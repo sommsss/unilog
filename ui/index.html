@@ -1097,6 +1097,36 @@
   var selectedFile = null;
   var parsedRows = 0;
   var polling = null;
+  var backendUp = null;   // null = not probed yet
+
+  var NO_BACKEND =
+    "No uniLog backend is running behind this page — it answered with a web page instead of "
+    + "data. This is the static build, which can check your file but cannot run the pipeline. "
+    + "Start the backend with `python server.py` and open http://127.0.0.1:8000.";
+
+  /* A static host answers /api/* with an HTML error page, and JSON.parse on
+     "<!DOCTYPE ..." throws a error that says nothing useful. Read the body as
+     text first so we can tell "not deployed" apart from a real API error. */
+  function readJson(response) {
+    return response.text().then(function (text) {
+      try {
+        return JSON.parse(text);
+      } catch (err) {
+        throw new Error(NO_BACKEND);
+      }
+    });
+  }
+
+  function probeBackend() {
+    return fetch("/api/config")
+      .then(function (r) {
+        if (!r.ok) throw new Error(NO_BACKEND);
+        return readJson(r);
+      })
+      .then(function () { backendUp = true; })
+      .catch(function () { backendUp = false; })
+      .then(function () { refreshCaption(); });
+  }
 
   STAGES.forEach(function (name, i) {
     var el = document.createElement("span");
@@ -1137,6 +1167,12 @@
   }
 
   function refreshCaption() {
+    if (backendUp === false) {
+      caption.textContent = selectedFile
+        ? "File checks passed — but this static build has no backend to run the pipeline"
+        : "Preview mode: file checks run in your browser, no backend attached";
+      return;
+    }
     var est = estimate();
     caption.textContent = selectedFile
       ? (est || "Ready to run")
@@ -1162,7 +1198,7 @@
       fetch("/api/status/" + jobId)
         .then(function (r) {
           if (!r.ok) throw new Error("Lost track of the run (HTTP " + r.status + ").");
-          return r.json();
+          return readJson(r);
         })
         .then(function (job) {
           if (job.state === "error") {
@@ -1208,7 +1244,7 @@
 
   function showOutcome(jobId) {
     fetch("/api/result/" + jobId)
-      .then(function (r) { return r.json(); })
+      .then(readJson)
       .then(function (data) {
         var s = data.summary;
         document.getElementById("oGreen").textContent = s.auto_approved;
@@ -1258,6 +1294,11 @@
   runBtn.addEventListener("click", function () {
     if (!selectedFile) { input.click(); return; }
 
+    if (backendUp === false) {
+      fail(NO_BACKEND);
+      return;
+    }
+
     var form = new FormData();
     form.append("file", selectedFile);
     form.append("limit", limitSel.value);
@@ -1276,21 +1317,21 @@
 
     fetch("/api/run", { method: "POST", body: form })
       .then(function (r) {
-        return r.json().then(function (data) {
+        return readJson(r).then(function (data) {
           if (!r.ok) throw new Error(data.detail || "The server rejected that file.");
           return data;
         });
       })
       .then(function (data) { poll(data.job_id); })
       .catch(function (err) {
-        fail(err.message === "Failed to fetch"
-          ? "No backend reachable. Start it with `python server.py` and open http://127.0.0.1:8000."
-          : err.message);
+        fail(err.message === "Failed to fetch" ? NO_BACKEND : err.message);
       });
   });
 
   document.getElementById("navCta").addEventListener("click", function () {
     if (selectedFile) runBtn.click(); else input.click();
   });
+
+  probeBackend();
 })();
 </script>

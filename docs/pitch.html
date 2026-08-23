@@ -1,0 +1,1069 @@
+<title>uniLog Pitch Answers</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,200..700&family=JetBrains+Mono:wght@400;500&display=swap">
+
+<style>
+  /* uniLog identity, carried over from the product page: committed dark world,
+     Archivo at two widths, JetBrains Mono for data. Accent only on hover and
+     on the one element in each diagram that carries the claim. */
+  :root {
+    --void:      #050506;
+    --carbon:    #0C0C10;
+    --carbon-hi: #14141A;
+    --rule:      #1A1A21;
+    --rule-hi:   #2A2A35;
+    --mist:      #9C9CAA;
+    --mist-dim:  #61616E;
+    --white:     #F2F2F4;
+
+    --deep:  #16256B;
+    --azure: #2F7BFF;
+    --iris:  #6C4DF6;
+    --grad:  linear-gradient(115deg, var(--deep) 0%, var(--azure) 48%, var(--iris) 100%);
+
+    --ok:   #35C88A;
+    --warn: #E0B341;
+    --crit: #E8544E;
+
+    --gutter: clamp(1.25rem, 4vw, 3.5rem);
+    --display: "Archivo", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    --body:    "Archivo", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    --mono:    "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--void);
+    color: var(--white);
+    font-family: var(--body);
+    font-size: 16px;
+    line-height: 1.62;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  ::selection { background: var(--iris); color: #fff; }
+  a { color: var(--azure); text-decoration: none; border-bottom: 1px solid rgba(47,123,255,.35); }
+  a:hover { color: var(--iris); border-bottom-color: rgba(108,77,246,.6); }
+  :focus-visible { outline: 2px solid var(--azure); outline-offset: 3px; border-radius: 2px; }
+
+  .shell { max-width: 1080px; margin: 0 auto; padding: 0 var(--gutter) 5rem; }
+
+  /* ── masthead ───────────────────────────────────────────────────────── */
+  .masthead { padding: clamp(2.5rem, 6vw, 4.5rem) 0 clamp(1.75rem, 4vw, 2.75rem); }
+  .wordmark {
+    font-family: var(--display);
+    font-variation-settings: "wdth" 108;
+    font-size: 1.25rem;
+    letter-spacing: -.035em;
+    line-height: 1;
+    color: var(--white);
+  }
+  .wordmark b { font-weight: 600; }
+  .wordmark span { font-weight: 200; }
+
+  h1 {
+    margin: 1.5rem 0 0;
+    font-family: var(--display);
+    font-variation-settings: "wdth" 114;
+    font-weight: 300;
+    font-size: clamp(2rem, 4.6vw, 3.4rem);
+    line-height: 1.02;
+    letter-spacing: -.038em;
+    text-wrap: balance;
+  }
+  .standfirst {
+    margin: 1.1rem 0 0;
+    max-width: 62ch;
+    color: var(--mist);
+    font-size: 1.02rem;
+  }
+
+  .toc {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .4rem;
+    margin-top: 2rem;
+    padding-top: 1.75rem;
+    border-top: 1px solid var(--rule);
+  }
+  .toc a {
+    font-family: var(--mono);
+    font-size: .66rem;
+    letter-spacing: .05em;
+    padding: .34rem .68rem;
+    border-radius: 999px;
+    border: 1px solid var(--rule);
+    color: var(--mist);
+    background: var(--carbon);
+    transition: color .25s ease, border-color .25s ease, background .25s ease;
+  }
+  .toc a:hover { color: var(--white); border-color: var(--rule-hi); background: var(--carbon-hi); }
+
+  /* ── sections ───────────────────────────────────────────────────────── */
+  section { padding: clamp(2.25rem, 5vw, 3.5rem) 0; border-top: 1px solid var(--rule); }
+  section:first-of-type { border-top: none; }
+
+  .eyebrow {
+    font-family: var(--mono);
+    font-size: .64rem;
+    letter-spacing: .18em;
+    color: var(--mist-dim);
+    display: block;
+    margin-bottom: .75rem;
+  }
+  h2 {
+    margin: 0 0 1.1rem;
+    font-family: var(--display);
+    font-variation-settings: "wdth" 108;
+    font-weight: 400;
+    font-size: clamp(1.35rem, 2.6vw, 1.85rem);
+    line-height: 1.2;
+    letter-spacing: -.025em;
+    text-wrap: balance;
+  }
+  h3 {
+    margin: 2rem 0 .65rem;
+    font-size: .95rem;
+    font-weight: 600;
+    letter-spacing: -.005em;
+  }
+  h3:first-of-type { margin-top: 1.5rem; }
+
+  p { margin: 0 0 1rem; max-width: 72ch; }
+  p:last-child { margin-bottom: 0; }
+  .lead { color: var(--white); }
+  section p { color: var(--mist); }
+  section p.lead { color: var(--white); }
+  strong { color: var(--white); font-weight: 600; }
+
+  ul, ol { margin: 0 0 1rem; padding-left: 1.15rem; max-width: 72ch; color: var(--mist); }
+  li { margin-bottom: .5rem; }
+  li::marker { color: var(--mist-dim); }
+  li strong { color: var(--white); }
+
+  code {
+    font-family: var(--mono);
+    font-size: .84em;
+    color: var(--white);
+    background: var(--carbon-hi);
+    padding: .12em .4em;
+    border-radius: 4px;
+    border: 1px solid var(--rule);
+  }
+
+  pre {
+    font-family: var(--mono);
+    font-size: .72rem;
+    line-height: 1.75;
+    color: var(--mist);
+    background: var(--carbon);
+    border: 1px solid var(--rule);
+    border-radius: 10px;
+    padding: 1.1rem 1.25rem;
+    margin: 0 0 1rem;
+    overflow-x: auto;
+  }
+  pre b { color: var(--white); font-weight: 400; }
+  pre .g { color: var(--ok); }
+  pre .a { color: var(--warn); }
+  pre .r { color: var(--crit); }
+  pre .c { color: var(--mist-dim); }
+
+  /* ── surfaces ───────────────────────────────────────────────────────── */
+  .surf {
+    position: relative;
+    background: var(--carbon);
+    border: 1px solid var(--rule);
+    border-radius: 12px;
+    transition: background .35s ease, box-shadow .45s ease, border-color .35s ease;
+  }
+  .surf::before {
+    content: "";
+    position: absolute;
+    inset: -1px;
+    border-radius: inherit;
+    padding: 1px;
+    background: var(--grad);
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+            mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+            mask-composite: exclude;
+    opacity: 0;
+    transition: opacity .35s ease;
+    pointer-events: none;
+  }
+  .surf:hover { border-color: transparent; background: var(--carbon-hi); box-shadow: 0 24px 70px -30px rgba(108,77,246,.5); }
+  .surf:hover::before { opacity: 1; }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: .85rem;
+    margin: 1.25rem 0;
+  }
+  .card { padding: 1.15rem 1.25rem 1.3rem; }
+  .card .k {
+    display: block;
+    font-family: var(--mono);
+    font-size: .6rem;
+    letter-spacing: .16em;
+    color: var(--mist-dim);
+    margin-bottom: .7rem;
+  }
+  .card h4 { margin: 0 0 .4rem; font-size: .9rem; font-weight: 600; letter-spacing: -.01em; }
+  .card p { margin: 0; font-size: .84rem; line-height: 1.55; color: var(--mist); }
+
+  /* ── tables ─────────────────────────────────────────────────────────── */
+  .scroller { overflow-x: auto; margin: 1.25rem 0; border: 1px solid var(--rule); border-radius: 10px; }
+  table { border-collapse: collapse; width: 100%; font-size: .82rem; }
+  th, td { text-align: left; padding: .7rem .95rem; border-bottom: 1px solid var(--rule); vertical-align: top; }
+  thead th {
+    font-family: var(--mono);
+    font-size: .62rem;
+    letter-spacing: .13em;
+    color: var(--mist-dim);
+    font-weight: 400;
+    background: var(--carbon);
+    white-space: nowrap;
+  }
+  tbody tr:last-child td { border-bottom: none; }
+  tbody td { color: var(--mist); }
+  tbody td:first-child { color: var(--white); font-weight: 500; }
+  tbody tr { transition: background .25s ease; }
+  tbody tr:hover { background: rgba(47,123,255,.055); }
+  tbody tr:hover td { color: var(--white); }
+  td .mono, th .mono { font-family: var(--mono); font-size: .92em; }
+
+  /* ── figures ────────────────────────────────────────────────────────── */
+  figure { margin: 1.5rem 0; }
+  figure svg { display: block; width: 100%; max-width: 100%; height: auto; color: var(--mist); }
+  .figframe { padding: 1.4rem clamp(.75rem, 2vw, 1.5rem); overflow-x: auto; }
+  figcaption {
+    margin-top: .9rem;
+    font-size: .82rem;
+    line-height: 1.55;
+    color: var(--mist-dim);
+    max-width: 72ch;
+  }
+
+  .svg-box   { fill: #0C0C10; stroke: #2A2A35; }
+  .svg-band  { fill: #08080B; stroke: #1A1A21; stroke-dasharray: 4 4; }
+  .svg-key   { fill: #0E1330; stroke: #2F7BFF; }
+  .svg-t     { fill: #F2F2F4; font-family: "Archivo", Helvetica, Arial, sans-serif; font-size: 13px; font-weight: 500; }
+  .svg-s     { fill: #9C9CAA; font-family: "JetBrains Mono", monospace; font-size: 10.5px; letter-spacing: .06em; }
+  .svg-e     { fill: #61616E; font-family: "JetBrains Mono", monospace; font-size: 10px; letter-spacing: .04em; }
+  .svg-acc   { fill: #6FA5FF; font-family: "JetBrains Mono", monospace; font-size: 10px; letter-spacing: .04em; }
+  .svg-line  { stroke: #3A3A48; stroke-width: 1.4; fill: none; }
+  .svg-lineacc { stroke: #2F7BFF; stroke-width: 1.6; fill: none; }
+
+  /* ── callout ────────────────────────────────────────────────────────── */
+  .note {
+    border-left: 2px solid var(--rule-hi);
+    padding: .1rem 0 .1rem 1.1rem;
+    margin: 1.25rem 0;
+    color: var(--mist);
+    font-size: .9rem;
+    max-width: 70ch;
+  }
+  .note.flag { border-left-color: var(--warn); }
+  .note strong { color: var(--white); }
+
+  .pull {
+    font-family: var(--display);
+    font-variation-settings: "wdth" 106;
+    font-weight: 300;
+    font-size: clamp(1.15rem, 2.3vw, 1.6rem);
+    line-height: 1.3;
+    letter-spacing: -.022em;
+    color: var(--white);
+    max-width: 30ch;
+    margin: 1.5rem 0;
+  }
+
+  footer {
+    border-top: 1px solid var(--rule);
+    margin-top: 2rem;
+    padding-top: 1.4rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: .5rem 1.5rem;
+    font-family: var(--mono);
+    font-size: .64rem;
+    letter-spacing: .1em;
+    color: var(--mist-dim);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { transition-duration: .01ms !important; animation: none !important; }
+  }
+
+  /* ── print / PDF ──────────────────────────────────────────────────────
+     Keeps the dark identity in an exported PDF. The page margin is zero so
+     the sheet is painted edge to edge — a margin box would print white and
+     frame every page — and the margin is reinstated as padding on .shell. */
+  @page { size: A4; margin: 0; }
+
+  @media print {
+    html, body { background: #050506 !important; }
+    body { font-size: 10.5pt; }
+    * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+    .toc { display: none; }
+    .shell { max-width: none; padding: 14mm 13mm; }
+    section { padding: 15pt 0; }
+    h1, h2, h3, h4, .eyebrow { break-after: avoid; }
+    figure, .figframe, pre, .scroller, .card, .note, .pull { break-inside: avoid; }
+    /* Cap diagram height so a figure still fits on the page under its heading
+       instead of being pushed to the next one and orphaning the title. */
+    figure svg { width: auto; height: auto; max-height: 198mm; max-width: 100%; margin: 0 auto; }
+    tr { break-inside: avoid; }
+    a { color: #6FA5FF !important; border-bottom: none !important; }
+    .surf:hover { box-shadow: none !important; }
+    .surf::before { display: none !important; }
+  }
+</style>
+
+<div class="shell">
+
+  <header class="masthead">
+    <div class="wordmark"><span>uni</span><b>Log</b></div>
+    <h1>Submission answers</h1>
+    <p class="standfirst">Every answer below is written from the working codebase, not from intent. Figures marked <em>verified</em> come from real runs; anything unmeasured is labelled as such, so nothing on a slide can be challenged in Q&amp;A.</p>
+    <nav class="toc">
+      <a href="#s1">01 SOLUTION</a>
+      <a href="#s2">02 ENRICHMENT</a>
+      <a href="#s3">03 ACCURACY</a>
+      <a href="#s4">04 DIFFERENTIATION</a>
+      <a href="#s5">05 FIT TO PROBLEM</a>
+      <a href="#s6">06 USP</a>
+      <a href="#s7">07 FEATURES</a>
+      <a href="#s8">08 PROCESS FLOW</a>
+      <a href="#s9">09 WIREFRAME</a>
+      <a href="#s10">10 ARCHITECTURE</a>
+      <a href="#s11">11 TECH STACK</a>
+      <a href="#s12">12 MVP</a>
+      <a href="#s13">13 ROADMAP</a>
+      <a href="#s14">14 SCALABILITY</a>
+    </nav>
+  </header>
+
+  <!-- 01 ─────────────────────────────────────────────────────────────── -->
+  <section id="s1">
+    <span class="eyebrow">01 &mdash; BRIEF ABOUT YOUR SOLUTION</span>
+    <h2>uniLog is an automated product-data enrichment engine for industrial catalogs.</h2>
+
+    <p class="lead">It takes a supplier's raw export &mdash; six columns of inconsistent identity data &mdash; and produces the client's 252-column commerce-ready delivery format, with no human touching a row that the system is confident about.</p>
+
+    <p>Seven stages run in sequence: <strong>sanitize, classify, retrieve, extract, normalize, validate, export</strong>. The design principle running through all of them is a split of responsibility: <strong>AI proposes, deterministic code disposes.</strong> A language model is used at exactly one point &mdash; reading a technical document and proposing candidate facts. It never writes to the output. Every value it proposes then passes through rule-based normalization, conflict detection and a quality gate before any column is filled.</p>
+
+    <p>The result is a catalog where each published value can be traced back to the document, page and text snippet it came from, and where the rows a machine should not have decided alone are routed to a person with the reason attached.</p>
+
+    <div class="grid">
+      <div class="card surf"><span class="k">INPUT</span><h4>6 columns</h4><p>Part number, description, three brand fields that are usually placeholders, and a manufacturer name carrying an ERP code.</p></div>
+      <div class="card surf"><span class="k">OUTPUT</span><h4>252 columns</h4><p>The client's delivery format, read from their own sheet at runtime so the deliverable cannot drift from the contract.</p></div>
+      <div class="card surf"><span class="k">HUMAN EFFORT</span><h4>Only where earned</h4><p>Green publishes automatically. Amber queues for review with a stated reason. Red is flagged for research.</p></div>
+    </div>
+  </section>
+
+  <!-- 02 ─────────────────────────────────────────────────────────────── -->
+  <section id="s2">
+    <span class="eyebrow">02 &mdash; HOW IT ENRICHES MINIMAL PRODUCT INFORMATION</span>
+    <h2>Each stage adds one kind of knowledge the previous stage could not have had.</h2>
+
+    <p>The clearest way to answer this is to follow one real row from the sample dataset all the way through. This is an actual product from the input file and an actual output row from a verified run.</p>
+
+    <h3>The input</h3>
+<pre><b>Mfg_Part_Num</b>  DCB518ASTS06G
+<b>Part_Desc</b>     DCB518ASTS06G Diablo 1/2"x18" - Sanding Belt 6pc
+<b>E1_Brand</b>      -- Unbranded --
+<b>Unilog_Brand</b>  -- No Unilog Brand --
+<b>DIB_Brand</b>     -- No DIB Brand --
+<b>Part_Manuf</b>    Freud Inc (2435)</pre>
+
+    <p>Three of the six fields carry no information at all. The manufacturer field carries an internal ERP code. Everything a retailer would actually want &mdash; grit, dimensions, backing material, pack quantity &mdash; is either buried in one string or absent entirely.</p>
+
+    <h3>What each stage contributes</h3>
+
+    <div class="scroller">
+      <table>
+        <thead>
+          <tr><th>Stage</th><th>Knowledge added</th><th>Result on this row</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1 &mdash; Sanitize</td>
+            <td>Removes noise that would poison every later stage</td>
+            <td>Placeholders dropped; ERP suffix stripped &rarr; <span class="mono">Freud Inc</span></td>
+          </tr>
+          <tr>
+            <td>2 &mdash; Classify</td>
+            <td>Decides <em>which of the 252 columns even apply</em> to this product</td>
+            <td>Category <span class="mono">Abrasives</span>; target attributes become Grit, Diameter, Arbor Size, Abrasive Material, Max RPM; classpath <span class="mono">Abrasives&gt;Coated Abrasives&gt;Discs &amp; Belts</span></td>
+          </tr>
+          <tr>
+            <td>3 &mdash; Retrieve</td>
+            <td>Brings in authoritative text that does not exist in the input at all</td>
+            <td>Found and downloaded the manufacturer's own page, <span class="mono">diablotools.com/products/DCB518ASTS06G</span>; marketplace results rejected</td>
+          </tr>
+          <tr>
+            <td>4 &mdash; Extract</td>
+            <td>Turns prose into typed facts with provenance</td>
+            <td>Width 1/2 IN, Length 18 IN, Quantity 6 EA, Product Type, Brand &mdash; each with confidence, source snippet and page</td>
+          </tr>
+          <tr>
+            <td>5 &mdash; Normalize</td>
+            <td>Makes values comparable across suppliers</td>
+            <td><span class="mono">inches &rarr; IN</span>, <span class="mono">6pc &rarr; 6 EA</span>, fractions preserved as <span class="mono">1/2</span> per the delivery convention</td>
+          </tr>
+          <tr>
+            <td>6 &mdash; Validate</td>
+            <td>Decides whether this row is fit to publish</td>
+            <td>Scored on completeness, confidence and normalization &rarr; routed green</td>
+          </tr>
+          <tr>
+            <td>7 &mdash; Map &amp; export</td>
+            <td>Places every fact in the column the contract expects</td>
+            <td>Facts land in the ATTRIBUTE_LABEL / VALUE / UOM triplets; dimensions, classpath and five description fields filled</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>The output</h3>
+<pre><b>Mfg_Part_Num</b>       DCB518ASTS06G
+<b>BRAND_NAME</b>         Diablo            <span class="c">&#8592; recovered from the description, not the distributor</span>
+<b>MANUFACTURER_NAME</b>  Freud Inc
+<b>Classpath</b>          Abrasives&gt;Coated Abrasives&gt;Discs &amp; Belts
+<b>Product Name</b>       Sanding Belt
+<b>INVOICE_DESC</b>       SANDING BELT 1/2IN 18IN 6EA
+<b>SHORT_DESC</b>         Diablo Sanding Belt DCB518ASTS06G 1/2 IN, 18 IN, 6 EA
+<b>ATTRIBUTE 1</b>        Width  / 1/2 / IN
+<b>ATTRIBUTE 2</b>        Length / 18  / IN
+<b>LENGTH / WIDTH</b>     18 IN / 1/2 IN
+<b>MFR URL</b>            https://diablotools.com/products/DCB518ASTS06G</pre>
+
+    <p>One detail worth calling out on the slide: <strong>the brand.</strong> All three supplier brand columns were placeholders, so a naive fallback lands on <span class="mono">Freud Inc</span> &mdash; the distributor. uniLog cross-checks the brand parsed out of the product text against the resolved one and publishes <span class="mono">Diablo</span>, which is what a customer actually searches for. That is enrichment producing a value that was in no structured field anywhere in the input.</p>
+  </section>
+
+  <!-- 03 ─────────────────────────────────────────────────────────────── -->
+  <section id="s3">
+    <span class="eyebrow">03 &mdash; ACCURACY AND TRUST</span>
+    <h2>Six independent layers, arranged so that no single failure reaches the catalog.</h2>
+
+    <p class="lead">The validation strategy is deliberately layered rather than relying on any one mechanism &mdash; particularly not on the language model's own self-assessment.</p>
+
+    <h3>1 &mdash; Source control (before any AI runs)</h3>
+    <p>The engine will not read from marketplaces. A deny-list of twenty domains &mdash; Amazon, eBay, Grainger, McMaster, Home Depot, Zoro, Fastenal and others &mdash; is applied at both discovery and download time, and retrieved results are ranked to prefer the manufacturer's own domain and PDF documents. Industrial specs on resale listings are frequently wrong or transcribed; refusing them at the source removes an entire class of error.</p>
+
+    <h3>2 &mdash; Rule-based validation (deterministic, no AI)</h3>
+    <p>Stage 1 and Stage 5 are pure Python with no model in the loop. Placeholder detection, ERP-code stripping, ~55 unit conversions, a ~30-term material vocabulary, imperial fraction handling and character-limit enforcement are all provable transformations. Anything the vocabulary does not recognise is not silently accepted &mdash; it is passed through and flagged <span class="mono">UNMAPPED_ENUM</span>, which lowers the product's score and surfaces the vocabulary gap.</p>
+
+    <h3>3 &mdash; Confidence scoring at the fact level</h3>
+    <p>Every extracted fact carries a High / Medium / Low confidence, the exact source snippet it came from, the page number, and which document produced it (<span class="mono">retrieved_document</span> vs <span class="mono">supplier_description</span>). Confidence is scored per fact, not per product, so one weak value cannot hide behind six strong ones.</p>
+
+    <h3>4 &mdash; Multi-source verification and conflict detection</h3>
+    <p>When more than one document is retrieved for a product, facts from each are extracted independently. If the same attribute comes back with two different normalized values, that attribute is recorded as a conflict, the product is penalised ten points per conflicting attribute, and the conflicting attribute names are named in the report. Agreement across independent sources raises trust; disagreement is surfaced rather than silently resolved by picking one.</p>
+
+    <h3>5 &mdash; Composite quality score</h3>
+<pre>score = completeness_ratio  &times; 40      <span class="c">how many required attributes were found</span>
+      + confidence_ratio   &times; 40      <span class="c">share of facts at High/Medium</span>
+      + normalization_ratio &times; 20      <span class="c">share that mapped to known vocabulary</span>
+      &minus; 10 per conflicting attribute
+      clamped to 0&ndash;100</pre>
+
+    <h3>6 &mdash; Human review routing (traffic light)</h3>
+    <div class="grid">
+      <div class="card surf"><span class="k" style="color:var(--ok)">&#9679; SCORE &ge; 80</span><h4>AUTO_APPROVED</h4><p>Publishes without human involvement. Specs are written into the delivery format.</p></div>
+      <div class="card surf"><span class="k" style="color:var(--warn)">&#9679; SCORE 50&ndash;79</span><h4>HUMAN_REVIEW</h4><p>Ships identity and taxonomy only, and queues with the specific reason: low completeness, low confidence, or the named conflict.</p></div>
+      <div class="card surf"><span class="k" style="color:var(--crit)">&#9679; SCORE &lt; 50</span><h4>FAILED</h4><p>Fails closed. A product with zero extracted facts scores zero &mdash; it is never published on the assumption that no news is good news.</p></div>
+    </div>
+
+    <h3>Underpinning all six: provenance and regression tests</h3>
+    <p>Four intermediate files are written every run &mdash; <span class="mono">retrieval_log.csv</span>, <span class="mono">extracted_facts.csv</span>, <span class="mono">normalized_facts.csv</span>, <span class="mono">validation_report.csv</span> &mdash; plus a timestamped run log. When a retailer disputes a spec, the chain from published column back to source URL and snippet is already on disk. A 23-test suite covers the routing boundaries, the conflict penalty, fail-closed behaviour, unit and material mapping, and the export shape.</p>
+
+    <p class="pull">The model is never trusted to be right. It is only trusted to propose something that deterministic code can then check.</p>
+  </section>
+
+  <!-- 04 ─────────────────────────────────────────────────────────────── -->
+  <section id="s4">
+    <span class="eyebrow">04 &mdash; HOW IT DIFFERS FROM EXISTING APPROACHES</span>
+    <h2>Four approaches already exist. Each fails in a specific, nameable way.</h2>
+
+    <div class="scroller">
+      <table>
+        <thead>
+          <tr><th>Existing approach</th><th>Where it breaks</th><th>What uniLog does instead</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Manual data-entry teams</td>
+            <td>Accurate but slow and expensive; quality drifts between operators and cannot be audited after the fact</td>
+            <td>Automates the confident majority and spends human attention only on rows the score flags</td>
+          </tr>
+          <tr>
+            <td>&ldquo;Ask an LLM to fill the columns&rdquo;</td>
+            <td>The model generates the row directly, so plausible-but-invented specs enter the catalog with no way to tell them from real ones</td>
+            <td>The model may only <em>extract from a retrieved document</em>. It never writes output. Deterministic code composes every published column</td>
+          </tr>
+          <tr>
+            <td>Classic PIM platforms (Akeneo, Salsify, inRiver)</td>
+            <td>Excellent at storing and governing attributes, but they assume the attributes already exist &mdash; they do not source them</td>
+            <td>Solves the acquisition problem that sits upstream of a PIM, and emits a file a PIM can ingest</td>
+          </tr>
+          <tr>
+            <td>Scraper / feed-aggregator tools</td>
+            <td>Take whatever the first result says, marketplaces included, and carry no confidence or provenance</td>
+            <td>Manufacturer-first sourcing with an explicit marketplace deny-list, plus per-fact confidence and a stored source URL</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>The three structural differences</h3>
+    <ul>
+      <li><strong>The schema is read from the client's contract, not hardcoded.</strong> The 252 column names are loaded from the delivery-format sheet at runtime. If the client revises the sheet, the output follows on the next run with no code change &mdash; and the deliverable can never silently drift from what was agreed.</li>
+      <li><strong>The output is row-aligned with the input.</strong> Every product that goes in comes out, whether or not it passed. Approved rows carry specs; the rest carry identity and taxonomy and sit in the review queue. Nothing disappears between input and delivery.</li>
+      <li><strong>Confidence is a routing decision, not a display field.</strong> Most tools show a confidence number and leave the judgement to a human scanning a spreadsheet. Here the score determines what publishes, so review effort is allocated by the system rather than by whoever is looking.</li>
+    </ul>
+  </section>
+
+  <!-- 05 ─────────────────────────────────────────────────────────────── -->
+  <section id="s5">
+    <span class="eyebrow">05 &mdash; HOW IT SOLVES THE PROBLEM STATEMENT</span>
+    <h2>The brief asks for 6 columns to become 252 at catalog scale, with quality that survives scrutiny.</h2>
+
+    <div class="scroller">
+      <table>
+        <thead>
+          <tr><th>Requirement</th><th>How uniLog meets it</th><th>Status</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Transform 6 &rarr; 252 columns</td><td>Schema loaded from the client sheet; facts mapped into the 50 attribute triplets, dimension columns and five description fields</td><td><span class="mono">verified &mdash; 252 columns</span></td></tr>
+          <tr><td>Handle the full 1,000-product dataset</td><td>Stateless per-product processing; the whole file parses and classifies in seconds</td><td><span class="mono">stages 1&ndash;2, 5&ndash;7 verified at 1,000</span></td></tr>
+          <tr><td>Minimal human intervention</td><td>One command runs all seven stages; only amber and red rows reach a person</td><td><span class="mono">verified</span></td></tr>
+          <tr><td>Source real technical data</td><td>Autonomous retrieval finds and downloads manufacturer documentation, then extracts its text</td><td><span class="mono">verified on live products</span></td></tr>
+          <tr><td>Quality that can be defended</td><td>Six validation layers, a 0&ndash;100 score, and four provenance files per run</td><td><span class="mono">verified</span></td></tr>
+          <tr><td>Operate within free-tier API limits</td><td>Built-in 15 requests/minute limiter with server-hinted cooldown on quota errors</td><td><span class="mono">verified &mdash; 0 rate-limit failures</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p><strong>Economics for the slide.</strong> At the enforced free-tier rate of 15 requests per minute, a 1,000-product catalog completes extraction in roughly 67 minutes at zero API cost. The comparison point is a manual specialist working through the same catalog over weeks. Quote the time saving; treat any cost-reduction percentage as an estimate unless you have the client's own per-SKU labour figure to anchor it.</p>
+  </section>
+
+  <!-- 06 ─────────────────────────────────────────────────────────────── -->
+  <section id="s6">
+    <span class="eyebrow">06 &mdash; USP</span>
+    <h2>One line for the slide</h2>
+    <p class="pull">AI proposes, deterministic rules dispose &mdash; and every published value can be traced back to the document, page and snippet it came from.</p>
+
+    <h3>The three supporting claims</h3>
+    <ol>
+      <li><strong>Provenance by construction, not as a feature.</strong> The audit trail is not a log bolted on afterwards; it is the data structure the pipeline passes between stages. A value cannot exist in the output without a recorded source.</li>
+      <li><strong>Manufacturer-first sourcing.</strong> An explicit marketplace deny-list and authority ranking means the engine prefers the party legally responsible for the specification over the party reselling it.</li>
+      <li><strong>The contract drives the code.</strong> The delivery schema is read from the client's own sheet each run, so the output shape is defined by the agreement rather than by a developer's copy of it.</li>
+    </ol>
+  </section>
+
+  <!-- 07 ─────────────────────────────────────────────────────────────── -->
+  <section id="s7">
+    <span class="eyebrow">07 &mdash; FEATURES</span>
+    <h2>What the system does today</h2>
+
+    <div class="grid">
+      <div class="card surf"><span class="k">STAGE 1</span><h4>Data sanitization</h4><p>Placeholder detection across supplier fields, ERP-suffix stripping, and a brand fallback chain terminating in an explicit UNKNOWN.</p></div>
+      <div class="card surf"><span class="k">STAGE 2</span><h4>Taxonomy &amp; classification</h4><p>Seven categories, per-category target attributes, Dept / Class / Fine / Classpath assignment and product-name derivation.</p></div>
+      <div class="card surf"><span class="k">STAGE 3</span><h4>Autonomous document retrieval</h4><p>Query construction with relaxed fallbacks, keyless web search, twenty-domain marketplace deny-list, manufacturer-domain and PDF ranking, politeness throttling, per-product document store.</p></div>
+      <div class="card surf"><span class="k">STAGE 3</span><h4>Multi-format text extraction</h4><p>PDF via pypdf and HTML via BeautifulSoup, with navigation and script content stripped before the text reaches the model.</p></div>
+      <div class="card surf"><span class="k">STAGE 4</span><h4>Evidence-graph extraction</h4><p>Structured facts with attribute, value, unit, confidence, source snippet, page number and originating document.</p></div>
+      <div class="card surf"><span class="k">STAGE 4</span><h4>Quota-aware API client</h4><p>Requests-per-minute limiter, server-hinted cooldown on 429, exponential backoff with jitter on 5xx, and per-run statistics.</p></div>
+      <div class="card surf"><span class="k">STAGE 5</span><h4>Deterministic normalization</h4><p>~55 unit conversions, ~30-term material vocabulary, imperial fraction preservation, grit-scale handling, word-boundary character limits.</p></div>
+      <div class="card surf"><span class="k">STAGE 6</span><h4>Conflict detection &amp; scoring</h4><p>Cross-source disagreement detection, weighted 0&ndash;100 quality score, per-conflict penalty, reasons attached to every flagged product.</p></div>
+      <div class="card surf"><span class="k">STAGE 6</span><h4>Traffic-light routing</h4><p>Automatic three-way split into publish, review and research queues with a written justification per row.</p></div>
+      <div class="card surf"><span class="k">STAGE 7</span><h4>Contract-driven schema mapping</h4><p>252 columns read from the client sheet, 50 attribute triplets filled by confidence rank, dedicated dimension columns, five generated description fields.</p></div>
+      <div class="card surf"><span class="k">PLATFORM</span><h4>Provenance &amp; observability</h4><p>Four intermediate CSVs per run, a per-product document store and a timestamped structured log file.</p></div>
+      <div class="card surf"><span class="k">PLATFORM</span><h4>Operator controls</h4><p>Command-line flags for batch size, document retrieval, rate limit, offline plumbing runs and verbose output.</p></div>
+      <div class="card surf"><span class="k">INTERFACE</span><h4>Upload &amp; validate UI</h4><p>Browser front end that parses a supplier CSV client-side, checks the header against the input schema, previews rows and projects the 6&rarr;252 transformation.</p></div>
+      <div class="card surf"><span class="k">QUALITY</span><h4>Regression test suite</h4><p>23 tests covering routing boundaries, conflict penalties, vocabulary mapping, export shape and rate-limiter behaviour.</p></div>
+    </div>
+  </section>
+
+  <!-- 08 ─────────────────────────────────────────────────────────────── -->
+  <section id="s8">
+    <span class="eyebrow">08 &mdash; PROCESS FLOW</span>
+    <h2>Process flow</h2>
+
+    <figure>
+      <div class="surf figframe">
+        <svg viewBox="0 0 780 830" role="img" aria-label="Process flow: a supplier CSV passes through seven stages, each adding a labelled artifact, and the validation stage splits products three ways before export produces the 252-column catalog.">
+          <defs>
+            <marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+              <path d="M0 0 L10 5 L0 10 z" fill="#3A3A48"/>
+            </marker>
+            <marker id="arg" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+              <path d="M0 0 L10 5 L0 10 z" fill="#35C88A"/>
+            </marker>
+            <marker id="ara" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+              <path d="M0 0 L10 5 L0 10 z" fill="#E0B341"/>
+            </marker>
+            <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+              <path d="M0 0 L10 5 L0 10 z" fill="#E8544E"/>
+            </marker>
+          </defs>
+
+          <!-- input -->
+          <rect class="svg-box" x="230" y="14" width="250" height="46" rx="8"/>
+          <text class="svg-t" x="355" y="34" text-anchor="middle">Supplier CSV</text>
+          <text class="svg-s" x="355" y="50" text-anchor="middle">6 COLUMNS &middot; 1,000 PRODUCTS</text>
+
+          <!-- spine arrows + artifact labels -->
+          <line class="svg-line" x1="355" y1="60" x2="355" y2="94" marker-end="url(#ar)"/>
+          <text class="svg-e" x="218" y="82" text-anchor="end">raw row</text>
+
+          <rect class="svg-box" x="230" y="96" width="250" height="46" rx="8"/>
+          <text class="svg-t" x="355" y="116" text-anchor="middle">1 &nbsp;Sanitize</text>
+          <text class="svg-s" x="355" y="132" text-anchor="middle">CLEANER.PY</text>
+
+          <line class="svg-line" x1="355" y1="142" x2="355" y2="176" marker-end="url(#ar)"/>
+          <text class="svg-e" x="218" y="164" text-anchor="end">resolved identity</text>
+
+          <rect class="svg-box" x="230" y="178" width="250" height="46" rx="8"/>
+          <text class="svg-t" x="355" y="198" text-anchor="middle">2 &nbsp;Classify</text>
+          <text class="svg-s" x="355" y="214" text-anchor="middle">TAXONOMY.PY</text>
+
+          <line class="svg-line" x1="355" y1="224" x2="355" y2="258" marker-end="url(#ar)"/>
+          <text class="svg-e" x="218" y="240" text-anchor="end">category +</text>
+          <text class="svg-e" x="218" y="252" text-anchor="end">target attributes</text>
+
+          <rect class="svg-box" x="230" y="260" width="250" height="46" rx="8"/>
+          <text class="svg-t" x="355" y="280" text-anchor="middle">3 &nbsp;Retrieve</text>
+          <text class="svg-s" x="355" y="296" text-anchor="middle">FETCHER.PY</text>
+          <text class="svg-acc" x="496" y="279">manufacturer sites only</text>
+          <text class="svg-e" x="496" y="293">marketplaces denied</text>
+
+          <line class="svg-line" x1="355" y1="306" x2="355" y2="340" marker-end="url(#ar)"/>
+          <text class="svg-e" x="218" y="322" text-anchor="end">document text +</text>
+          <text class="svg-e" x="218" y="334" text-anchor="end">source URLs</text>
+
+          <rect class="svg-box" x="230" y="342" width="250" height="46" rx="8"/>
+          <text class="svg-t" x="355" y="362" text-anchor="middle">4 &nbsp;Extract</text>
+          <text class="svg-s" x="355" y="378" text-anchor="middle">EXTRACTOR.PY &middot; LLM</text>
+          <text class="svg-acc" x="496" y="361">the only AI step</text>
+          <text class="svg-e" x="496" y="375">15 req/min limiter</text>
+
+          <line class="svg-line" x1="355" y1="388" x2="355" y2="422" marker-end="url(#ar)"/>
+          <text class="svg-e" x="218" y="404" text-anchor="end">facts + confidence</text>
+          <text class="svg-e" x="218" y="416" text-anchor="end">+ snippet + page</text>
+
+          <rect class="svg-box" x="230" y="424" width="250" height="46" rx="8"/>
+          <text class="svg-t" x="355" y="444" text-anchor="middle">5 &nbsp;Normalize</text>
+          <text class="svg-s" x="355" y="460" text-anchor="middle">NORMALIZER.PY &middot; NO AI</text>
+
+          <line class="svg-line" x1="355" y1="470" x2="355" y2="504" marker-end="url(#ar)"/>
+          <text class="svg-e" x="218" y="492" text-anchor="end">normalized values</text>
+
+          <rect class="svg-box" x="230" y="506" width="250" height="46" rx="8"/>
+          <text class="svg-t" x="355" y="526" text-anchor="middle">6 &nbsp;Validate &amp; score</text>
+          <text class="svg-s" x="355" y="542" text-anchor="middle">VALIDATOR.PY</text>
+
+          <!-- three-way branch: amber and red leave the spine into their queues -->
+          <path class="svg-line" d="M480 521 H508 V624 H534" stroke="#E0B341" marker-end="url(#ara)"/>
+          <rect x="540" y="605" width="212" height="38" rx="7" fill="#0C0C10" stroke="#4A3C18"/>
+          <text class="svg-s" x="646" y="622" text-anchor="middle" fill="#E0B341">HUMAN_REVIEW 50&ndash;79</text>
+          <text class="svg-e" x="646" y="636" text-anchor="middle">queued with reason</text>
+
+          <path class="svg-line" d="M480 541 H522 V696 H534" stroke="#E8544E" marker-end="url(#arr)"/>
+          <rect x="540" y="677" width="212" height="38" rx="7" fill="#0C0C10" stroke="#4A2220"/>
+          <text class="svg-s" x="646" y="694" text-anchor="middle" fill="#E8544E">FAILED &lt; 50</text>
+          <text class="svg-e" x="646" y="708" text-anchor="middle">research queue</text>
+
+          <line class="svg-line" x1="355" y1="552" x2="355" y2="586" stroke="#35C88A" marker-end="url(#arg)"/>
+          <text class="svg-s" x="218" y="567" text-anchor="end" fill="#35C88A">AUTO_APPROVED &ge; 80</text>
+          <text class="svg-e" x="218" y="580" text-anchor="end">approved facts only</text>
+
+          <rect class="svg-box" x="230" y="588" width="250" height="46" rx="8"/>
+          <text class="svg-t" x="355" y="608" text-anchor="middle">7 &nbsp;Map &amp; export</text>
+          <text class="svg-s" x="355" y="624" text-anchor="middle">MAPPER.PY &middot; EXPORTER.PY</text>
+
+          <line class="svg-line" x1="355" y1="634" x2="355" y2="668" marker-end="url(#ar)"/>
+          <text class="svg-e" x="218" y="656" text-anchor="end">252-column rows</text>
+
+          <rect class="svg-box" x="230" y="670" width="250" height="52" rx="8" stroke="#2A2A35"/>
+          <text class="svg-t" x="355" y="691" text-anchor="middle">FINAL_MASTER_CATALOG.csv</text>
+          <text class="svg-s" x="355" y="708" text-anchor="middle">252 COLUMNS &middot; ONE ROW PER INPUT</text>
+
+          <!-- provenance rail, kept clear of the artifact labels -->
+          <line class="svg-line" x1="46" y1="96" x2="46" y2="742" stroke="#22222C" stroke-dasharray="3 5" marker-end="url(#ar)"/>
+          <text class="svg-e" x="20" y="768">every stage writes its own audit file</text>
+          <text class="svg-e" x="20" y="782">retrieval_log &middot; extracted_facts</text>
+          <text class="svg-e" x="20" y="796">normalized_facts &middot; validation_report</text>
+        </svg>
+      </div>
+      <figcaption><strong>Figure 1.</strong> Each arrow is labelled with the artifact that actually moves between stages, not just sequence. Note the branch at Stage 6: only approved facts continue into the export, while amber and red rows leave the spine &mdash; and every stage writes to the provenance rail on the left, which is what makes any published value auditable afterwards.</figcaption>
+    </figure>
+  </section>
+
+  <!-- 09 ─────────────────────────────────────────────────────────────── -->
+  <section id="s9">
+    <span class="eyebrow">09 &mdash; WIREFRAME</span>
+    <h2>Interface</h2>
+
+    <p>The operator-facing surface is deliberately one screen. A catalog manager arrives with a supplier export and needs to know two things before committing to a run: whether the file is readable, and what it will become.</p>
+
+    <figure>
+      <div class="surf figframe">
+        <svg viewBox="0 0 880 560" role="img" aria-label="Wireframe of the uniLog upload screen: navigation bar, oversized headline with stage tags, a CSV dropzone in the right column, and a results panel below showing counts, column checks and a row preview.">
+          <defs>
+            <marker id="ar2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+              <path d="M0 0 L10 5 L0 10 z" fill="#2F7BFF"/>
+            </marker>
+          </defs>
+
+          <!-- viewport -->
+          <rect class="svg-band" x="10" y="10" width="620" height="540" rx="10"/>
+
+          <!-- nav -->
+          <rect class="svg-box" x="34" y="34" width="72" height="18" rx="4"/>
+          <text class="svg-e" x="70" y="47" text-anchor="middle">uniLog</text>
+          <rect class="svg-box" x="300" y="34" width="150" height="18" rx="4"/>
+          <text class="svg-e" x="375" y="47" text-anchor="middle">nav links</text>
+          <rect class="svg-box" x="504" y="30" width="102" height="26" rx="13"/>
+          <text class="svg-e" x="555" y="47" text-anchor="middle">Run Pipeline</text>
+
+          <!-- headline block -->
+          <rect class="svg-box" x="34" y="122" width="330" height="26" rx="4"/>
+          <rect class="svg-box" x="34" y="156" width="286" height="26" rx="4"/>
+          <text class="svg-s" x="34" y="112">HEADLINE</text>
+          <rect class="svg-box" x="34" y="204" width="330" height="14" rx="3"/>
+          <text class="svg-e" x="34" y="234">CLEAN \ CLASSIFY \ FETCH \ EXTRACT \ ...</text>
+
+          <!-- aside + dropzone -->
+          <rect class="svg-box" x="404" y="118" width="202" height="34" rx="4"/>
+          <text class="svg-e" x="505" y="139" text-anchor="middle">6 in &rarr; 252 out</text>
+
+          <rect class="svg-key" x="404" y="166" width="202" height="66" rx="10" stroke-dasharray="5 4"/>
+          <circle cx="432" cy="199" r="12" fill="none" stroke="#2F7BFF"/>
+          <path d="M432 205 V193 M427 197 l5 -5 l5 5" stroke="#2F7BFF" stroke-width="1.3" fill="none" stroke-linecap="round"/>
+          <text class="svg-s" x="454" y="196" fill="#6FA5FF">Upload supplier CSV</text>
+          <text class="svg-e" x="454" y="210">DROP A FILE OR CLICK</text>
+
+          <!-- result panel -->
+          <rect class="svg-box" x="34" y="266" width="572" height="256" rx="10"/>
+          <line class="svg-line" x1="34" y1="298" x2="606" y2="298" stroke="#1A1A21"/>
+          <text class="svg-e" x="50" y="288">filename.csv</text>
+          <text class="svg-e" x="590" y="288" text-anchor="end">184 KB &middot; 6 COLUMNS</text>
+
+          <text class="svg-t" x="50" y="330">1,000</text>
+          <text class="svg-e" x="50" y="344">PRODUCTS READ</text>
+          <text class="svg-t" x="170" y="330">6</text>
+          <text class="svg-e" x="170" y="344">COLUMNS IN</text>
+          <text class="svg-t" x="280" y="330">252</text>
+          <text class="svg-e" x="280" y="344">COLUMNS OUT</text>
+          <text class="svg-t" x="400" y="330">7</text>
+          <text class="svg-e" x="400" y="344">STAGES</text>
+
+          <rect class="svg-box" x="50" y="360" width="92" height="17" rx="8"/>
+          <text class="svg-e" x="96" y="372" text-anchor="middle">Mfg_Part_Num</text>
+          <rect class="svg-box" x="150" y="360" width="72" height="17" rx="8"/>
+          <text class="svg-e" x="186" y="372" text-anchor="middle">Part_Desc</text>
+          <rect class="svg-box" x="230" y="360" width="70" height="17" rx="8"/>
+          <text class="svg-e" x="265" y="372" text-anchor="middle">E1_Brand</text>
+          <rect x="308" y="360" width="88" height="17" rx="8" fill="#0C0C10" stroke="#4A2220"/>
+          <text class="svg-e" x="352" y="372" text-anchor="middle" fill="#E8544E">Part_Manuf ?</text>
+
+          <line class="svg-line" x1="50" y1="394" x2="590" y2="394" stroke="#1A1A21"/>
+          <line class="svg-line" x1="50" y1="420" x2="590" y2="420" stroke="#1A1A21"/>
+          <line class="svg-line" x1="50" y1="446" x2="590" y2="446" stroke="#1A1A21"/>
+          <line class="svg-line" x1="50" y1="472" x2="590" y2="472" stroke="#1A1A21"/>
+          <text class="svg-e" x="50" y="410">row preview &mdash; first five products, scrolls horizontally</text>
+
+          <circle cx="56" cy="500" r="3" fill="#35C88A"/>
+          <text class="svg-e" x="66" y="504">AUTO_APPROVED &ge; 80</text>
+          <circle cx="216" cy="500" r="3" fill="#E0B341"/>
+          <text class="svg-e" x="226" y="504">HUMAN_REVIEW 50&ndash;79</text>
+          <circle cx="386" cy="500" r="3" fill="#E8544E"/>
+          <text class="svg-e" x="396" y="504">FAILED &lt; 50</text>
+
+          <!-- annotations -->
+          <line class="svg-lineacc" x1="660" y1="199" x2="616" y2="199" marker-end="url(#ar2)"/>
+          <text class="svg-acc" x="668" y="195">Drag-drop or click.</text>
+          <text class="svg-e" x="668" y="209">Parsed in the browser &mdash;</text>
+          <text class="svg-e" x="668" y="222">nothing uploaded until</text>
+          <text class="svg-e" x="668" y="235">the run is confirmed.</text>
+
+          <line class="svg-lineacc" x1="660" y1="368" x2="616" y2="368" marker-end="url(#ar2)"/>
+          <text class="svg-acc" x="668" y="364">Header checked against</text>
+          <text class="svg-e" x="668" y="378">the input schema before</text>
+          <text class="svg-e" x="668" y="391">any API call is spent.</text>
+        </svg>
+      </div>
+      <figcaption><strong>Figure 2.</strong> The upload screen. The file is parsed client-side, so a malformed export is caught before a single API call is spent on it &mdash; the red chip shows a missing required column, and the error text names the column and what to do about it. A live build of this screen is linked in section 12.</figcaption>
+    </figure>
+  </section>
+
+  <!-- 10 ─────────────────────────────────────────────────────────────── -->
+  <section id="s10">
+    <span class="eyebrow">10 &mdash; ARCHITECTURE</span>
+    <h2>Architecture</h2>
+
+    <figure>
+      <div class="surf figframe">
+        <svg viewBox="0 0 900 450" role="img" aria-label="Architecture diagram: an orchestrator drives seven local modules; only the retrieval and extraction stages leave the process, and each crosses the boundary through a guard — a domain deny-list and a rate limiter.">
+          <defs>
+            <marker id="ar3" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+              <path d="M0 0 L10 5 L0 10 z" fill="#3A3A48"/>
+            </marker>
+            <marker id="ar3a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+              <path d="M0 0 L10 5 L0 10 z" fill="#2F7BFF"/>
+            </marker>
+          </defs>
+
+          <!-- config / inputs -->
+          <text class="svg-s" x="20" y="24">INPUTS</text>
+          <rect class="svg-box" x="20" y="34" width="150" height="34" rx="7"/>
+          <text class="svg-e" x="95" y="55" text-anchor="middle">supplier CSV</text>
+          <rect class="svg-box" x="20" y="76" width="150" height="34" rx="7"/>
+          <text class="svg-e" x="95" y="97" text-anchor="middle">delivery-format sheet</text>
+          <rect class="svg-box" x="20" y="118" width="150" height="34" rx="7"/>
+          <text class="svg-e" x="95" y="139" text-anchor="middle">.env &middot; config.py</text>
+
+          <!-- local process boundary -->
+          <rect class="svg-band" x="200" y="14" width="330" height="418" rx="12"/>
+          <text class="svg-s" x="216" y="34">LOCAL PROCESS</text>
+
+          <rect class="svg-box" x="220" y="46" width="290" height="38" rx="7"/>
+          <text class="svg-t" x="365" y="63" text-anchor="middle">main.py &mdash; orchestrator</text>
+          <text class="svg-e" x="365" y="77" text-anchor="middle">serial, resumable, CLI-driven</text>
+
+          <line class="svg-line" x1="365" y1="84" x2="365" y2="104" marker-end="url(#ar3)"/>
+
+          <rect class="svg-box" x="220" y="106" width="140" height="32" rx="6"/>
+          <text class="svg-e" x="290" y="126" text-anchor="middle">cleaner.py</text>
+          <rect class="svg-box" x="370" y="106" width="140" height="32" rx="6"/>
+          <text class="svg-e" x="440" y="126" text-anchor="middle">taxonomy.py</text>
+
+          <rect class="svg-key" x="220" y="146" width="140" height="32" rx="6"/>
+          <text class="svg-e" x="290" y="166" text-anchor="middle" fill="#6FA5FF">fetcher.py</text>
+          <rect class="svg-key" x="370" y="146" width="140" height="32" rx="6"/>
+          <text class="svg-e" x="440" y="166" text-anchor="middle" fill="#6FA5FF">extractor.py</text>
+
+          <rect class="svg-box" x="220" y="186" width="140" height="32" rx="6"/>
+          <text class="svg-e" x="290" y="206" text-anchor="middle">normalizer.py</text>
+          <rect class="svg-box" x="370" y="186" width="140" height="32" rx="6"/>
+          <text class="svg-e" x="440" y="206" text-anchor="middle">validator.py</text>
+
+          <rect class="svg-box" x="220" y="226" width="140" height="32" rx="6"/>
+          <text class="svg-e" x="290" y="246" text-anchor="middle">mapper.py</text>
+          <rect class="svg-box" x="370" y="226" width="140" height="32" rx="6"/>
+          <text class="svg-e" x="440" y="246" text-anchor="middle">exporter.py</text>
+
+          <line class="svg-line" x1="365" y1="266" x2="365" y2="286" marker-end="url(#ar3)"/>
+          <rect class="svg-box" x="220" y="288" width="290" height="34" rx="7"/>
+          <text class="svg-e" x="365" y="309" text-anchor="middle">logging_setup.py &mdash; structured run log</text>
+
+          <line class="svg-line" x1="365" y1="322" x2="365" y2="342" marker-end="url(#ar3)"/>
+          <rect class="svg-box" x="220" y="344" width="290" height="72" rx="7"/>
+          <text class="svg-s" x="365" y="364" text-anchor="middle">PERSISTENCE &mdash; FILESYSTEM</text>
+          <text class="svg-e" x="365" y="380" text-anchor="middle">retrieval_log &middot; extracted_facts</text>
+          <text class="svg-e" x="365" y="394" text-anchor="middle">normalized_facts &middot; validation_report</text>
+          <text class="svg-e" x="365" y="408" text-anchor="middle">retrieved_documents/ &middot; logs/</text>
+
+          <line class="svg-line" x1="170" y1="51" x2="216" y2="60" marker-end="url(#ar3)"/>
+          <line class="svg-line" x1="170" y1="93" x2="216" y2="66" marker-end="url(#ar3)"/>
+          <line class="svg-line" x1="170" y1="135" x2="216" y2="72" marker-end="url(#ar3)"/>
+
+          <!-- guards on the boundary -->
+          <rect class="svg-key" x="566" y="140" width="118" height="44" rx="7"/>
+          <text class="svg-acc" x="625" y="158" text-anchor="middle">DENY-LIST</text>
+          <text class="svg-e" x="625" y="172" text-anchor="middle">20 marketplaces</text>
+          <line class="svg-lineacc" x1="510" y1="162" x2="562" y2="162" marker-end="url(#ar3a)"/>
+
+          <rect class="svg-key" x="566" y="196" width="118" height="44" rx="7"/>
+          <text class="svg-acc" x="625" y="214" text-anchor="middle">RATE LIMITER</text>
+          <text class="svg-e" x="625" y="228" text-anchor="middle">15 req/min &middot; 429 hold</text>
+          <line class="svg-lineacc" x1="510" y1="218" x2="562" y2="218" marker-end="url(#ar3a)"/>
+
+          <!-- external -->
+          <text class="svg-s" x="716" y="24">EXTERNAL</text>
+          <rect class="svg-box" x="716" y="34" width="164" height="40" rx="7"/>
+          <text class="svg-e" x="798" y="50" text-anchor="middle">web search</text>
+          <text class="svg-e" x="798" y="64" text-anchor="middle">keyless HTML endpoint</text>
+
+          <rect class="svg-box" x="716" y="128" width="164" height="40" rx="7"/>
+          <text class="svg-e" x="798" y="144" text-anchor="middle">manufacturer sites</text>
+          <text class="svg-e" x="798" y="158" text-anchor="middle">PDF &amp; HTML documents</text>
+
+          <rect class="svg-box" x="716" y="196" width="164" height="40" rx="7"/>
+          <text class="svg-e" x="798" y="212" text-anchor="middle">Gemini API</text>
+          <text class="svg-e" x="798" y="226" text-anchor="middle">3.5-flash</text>
+
+          <line class="svg-lineacc" x1="684" y1="155" x2="712" y2="148" marker-end="url(#ar3a)"/>
+          <path class="svg-lineacc" d="M625 140 V54 H712" marker-end="url(#ar3a)"/>
+          <line class="svg-lineacc" x1="684" y1="217" x2="712" y2="216" marker-end="url(#ar3a)"/>
+
+          <!-- output -->
+          <text class="svg-s" x="716" y="300">DELIVERABLE</text>
+          <rect class="svg-box" x="716" y="310" width="164" height="48" rx="7"/>
+          <text class="svg-e" x="798" y="330" text-anchor="middle">FINAL_MASTER</text>
+          <text class="svg-e" x="798" y="344" text-anchor="middle">_CATALOG.csv &mdash; 252 cols</text>
+          <path class="svg-line" d="M510 242 H540 V334 H712" marker-end="url(#ar3)"/>
+        </svg>
+      </div>
+      <figcaption><strong>Figure 3.</strong> The claim this diagram makes: the trust boundary has exactly two crossings, and both are guarded. Retrieval leaves through a marketplace deny-list; extraction leaves through a rate limiter that also absorbs quota errors. Five of the seven stages never touch the network, which is why the pipeline is deterministic and testable where it matters.</figcaption>
+    </figure>
+  </section>
+
+  <!-- 11 ─────────────────────────────────────────────────────────────── -->
+  <section id="s11">
+    <span class="eyebrow">11 &mdash; TECHNOLOGIES USED</span>
+    <h2>Stack</h2>
+
+    <div class="scroller">
+      <table>
+        <thead><tr><th>Layer</th><th>Technology</th><th>Why it is there</th></tr></thead>
+        <tbody>
+          <tr><td>Language</td><td class="mono">Python 3.10+</td><td>Data-processing ecosystem and the reference SDKs for the model provider</td></tr>
+          <tr><td>Data handling</td><td class="mono">pandas</td><td>Catalog-scale frames, grouping facts by product, CSV round-tripping</td></tr>
+          <tr><td>AI extraction</td><td class="mono">google-genai &middot; Gemini 3.5-flash</td><td>Structured JSON extraction at low latency; free tier makes the pilot cost nothing</td></tr>
+          <tr><td>Document retrieval</td><td class="mono">requests</td><td>Streamed downloads with timeouts and status handling</td></tr>
+          <tr><td>HTML parsing</td><td class="mono">beautifulsoup4</td><td>Search-result parsing and readable text extraction with nav/script stripped</td></tr>
+          <tr><td>PDF parsing</td><td class="mono">pypdf</td><td>Page-level text extraction from manufacturer datasheets</td></tr>
+          <tr><td>Validation models</td><td class="mono">pydantic</td><td>Typed fact schema at the extraction boundary</td></tr>
+          <tr><td>Configuration</td><td class="mono">python-dotenv</td><td>API credentials kept out of source control</td></tr>
+          <tr><td>Observability</td><td class="mono">logging (stdlib) &middot; tqdm</td><td>Per-run timestamped log files plus live progress on long runs</td></tr>
+          <tr><td>Interface</td><td class="mono">HTML &middot; CSS &middot; vanilla JS &middot; Canvas</td><td>No framework, no build step; CSV parsed client-side, ambient field drawn on Canvas</td></tr>
+          <tr><td>Storage</td><td class="mono">CSV filesystem</td><td>Every intermediate is inspectable in a spreadsheet &mdash; deliberate for a pilot; Postgres is the scale path</td></tr>
+          <tr><td>Testing</td><td class="mono">Python, dependency-free runner</td><td>23 regression tests runnable without installing a test framework</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- 12 ─────────────────────────────────────────────────────────────── -->
+  <section id="s12">
+    <span class="eyebrow">12 &mdash; MVP SNAPSHOTS</span>
+    <h2>What the working system produces</h2>
+
+    <h3>A. Full pipeline run, with document retrieval enabled</h3>
+<pre><b>&#128640; Stage 1 &amp; 2: Cleaning &amp; Classification...</b>
+Category distribution: {'Abrasives': 2}
+&#9989; Cleaned &amp; classified 2 products
+
+<b>&#128640; Stage 3: Autonomous Document Retrieval...</b>
+DCB518ASTS06G: retrieved https://diablotools.com/products/DCB518ASTS06G
+DCB518ASTS06G: failed https://americatools.com/... (403 Client Error: Forbidden)
+&#9989; Retrieved 1/2 documents &rarr; data/intermediate/retrieval_log.csv
+
+<b>&#128640; Stage 4: AI Fact Extraction...</b>
+&#9989; Extracted 12 facts from 2 products in 0.3 min
+   (2 API calls, <span class="g">0 rate-limit pauses</span>, 0 failures)
+
+<b>&#128640; Stage 5: Deterministic Normalization...</b>
+&#9989; Normalized 12 facts {'SUCCESS': 12}
+
+<b>&#128640; Stage 6: Validation &amp; Quality Scoring...</b>
+&#9989; <span class="g">&#9679; 2 AUTO_APPROVED</span>  |  <span class="a">&#9679; 0 HUMAN_REVIEW</span>  |  <span class="r">&#9679; 0 FAILED</span>
+
+<b>&#128640; Stage 7: Final Master Export &amp; Schema Mapping...</b>
+Loaded delivery schema: 252 columns, 50 attribute slots
+Master catalog assembled: 2 rows x 252 columns
+&#127881; Pipeline complete &rarr; data/output/FINAL_MASTER_CATALOG.csv</pre>
+
+    <h3>B. Stage 3 finding a real manufacturer source</h3>
+<pre>QUERIES
+  "DCB518ASTS06G" "Freud Inc" datasheet pdf
+  "DCB518ASTS06G" "Diablo" manual pdf
+  "DCB518ASTS06G" datasheet
+
+TOP CANDIDATES <span class="c">(after deny-list and authority ranking)</span>
+  https://diablotools.com/products/DCB518ASTS06G
+  https://countrylinetools.com/products/diablo-dcb518asts06g-...
+
+<span class="c">rejected: amazon.com, grainger.com, zoro.com</span>
+
+DOC TEXT &mdash; 6,011 characters extracted</pre>
+
+    <h3>C. Normalization measured before and after</h3>
+    <p>On the 25-fact sample run, the flag distribution moved from <span class="mono">15 SUCCESS / 10 UNMAPPED_ENUM</span> to <span class="mono">25 SUCCESS / 0 UNMAPPED_ENUM</span> after the vocabulary was extended with the abrasive terms the dataset actually contains and imperial fractions were preserved rather than rejected.</p>
+
+    <h3>D. Test suite</h3>
+<pre>$ python tests/test_cleaner.py &amp;&amp; python tests/test_pipeline.py
+<span class="g">23 passed</span> &mdash; routing boundaries, conflict penalty, fail-closed
+behaviour, unit and material mapping, duplicate-attribute export,
+rate-limiter spacing, retry-delay parsing</pre>
+
+    <h3>E. The interface</h3>
+    <p>A live build of the upload screen is published at <a href="https://claude.ai/code/artifact/755caa71-bbdd-41b5-8da5-d7d41cdc541f">the uniLog front end</a>. Drop the sample dataset onto it during the demo &mdash; it parses all 1,000 rows in the browser, validates the header against the input schema and shows the 6&rarr;252 projection. Screenshot it for the slide, or run it live.</p>
+
+    <div class="note flag"><strong>Before the presentation:</strong> run <span class="mono">python main.py</span> once over the full catalog and screenshot the final routing summary. Every figure above is real, but they come from runs of two to five products. A full-catalog screenshot is the single strongest slide you can add, and it takes about an hour of unattended runtime.</div>
+  </section>
+
+  <!-- 13 ─────────────────────────────────────────────────────────────── -->
+  <section id="s13">
+    <span class="eyebrow">13 &mdash; FUTURE DEVELOPMENT</span>
+    <h2>Roadmap</h2>
+
+    <div class="grid">
+      <div class="card surf"><span class="k">NEAR TERM</span><h4>Commercial search API</h4><p>Swap the keyless endpoint for Brave, Serper or Bing. Contained to one function; removes the pipeline's only informal dependency.</p></div>
+      <div class="card surf"><span class="k">NEAR TERM</span><h4>Headless rendering</h4><p>Some manufacturer pages build their spec tables with JavaScript and return only a title to a plain fetch. A headless browser recovers them.</p></div>
+      <div class="card surf"><span class="k">NEAR TERM</span><h4>Measured classification accuracy</h4><p>Hand-label a few hundred products to produce a defensible accuracy figure instead of an asserted one.</p></div>
+      <div class="card surf"><span class="k">SCALE</span><h4>Concurrent extraction</h4><p>Extraction is serial only because of the free-tier quota. On a paid tier a worker pool cuts wall-clock time proportionally with no architectural change.</p></div>
+      <div class="card surf"><span class="k">SCALE</span><h4>Database backend</h4><p>Postgres or DuckDB replaces the CSV intermediates past roughly 100,000 products, enabling incremental queries and partial re-runs.</p></div>
+      <div class="card surf"><span class="k">SCALE</span><h4>Embedding-based classification</h4><p>Replace keyword rules with vector similarity against category exemplars, so new categories are added by example rather than by code.</p></div>
+      <div class="card surf"><span class="k">QUALITY</span><h4>Duplicate and variant detection</h4><p>Identify products that are the same item under different supplier part numbers, and group true variants into families.</p></div>
+      <div class="card surf"><span class="k">QUALITY</span><h4>Review console</h4><p>A queue interface for the amber tier: the flagged product, its evidence, the conflicting values, and one click to accept or correct.</p></div>
+      <div class="card surf"><span class="k">COVERAGE</span><h4>Image and asset pipeline</h4><p>The delivery format has columns for product images, alternate images, spec sheets and manuals. Retrieval already finds the documents; the next step is naming and storing them to the client's convention.</p></div>
+    </div>
+  </section>
+
+  <!-- 14 ─────────────────────────────────────────────────────────────── -->
+  <section id="s14">
+    <span class="eyebrow">14 &mdash; ENTERPRISE SCALABILITY</span>
+    <h2>What makes it scalable</h2>
+
+    <p class="lead">The property that matters most: <strong>processing is stateless per product.</strong> No stage needs to see product N&minus;1 to handle product N. That single design choice is what makes every scaling answer below straightforward.</p>
+
+    <h3>Large product catalogs</h3>
+    <ul>
+      <li><strong>Embarrassingly parallel by construction.</strong> Because products do not interact, the work shards trivially across workers or machines. The pipeline runs serially today for one reason only &mdash; a 15 request/minute free-tier quota &mdash; which is a commercial limit, not an architectural one.</li>
+      <li><strong>Runs are resumable.</strong> Each stage writes its output before the next begins, so a failure at product 800 does not discard the first 799. Extraction &mdash; the expensive stage &mdash; can be re-entered from <span class="mono">extracted_facts.csv</span> without re-spending a single API call.</li>
+      <li><strong>Cost scales linearly and predictably.</strong> One API call per product, so a catalog's cost is a multiplication, not an estimate. The four local stages are pure CPU and effectively free.</li>
+      <li><strong>The storage path is known.</strong> CSV is a deliberate pilot choice because every intermediate is inspectable in a spreadsheet. Past roughly 100,000 products the same code writes to Parquet or Postgres &mdash; the frames and the interfaces between stages do not change.</li>
+    </ul>
+
+    <h3>New manufacturers</h3>
+    <ul>
+      <li><strong>Nothing is hardcoded per manufacturer.</strong> There is no per-vendor URL table to maintain. Discovery composes its queries from the part number and the resolved manufacturer, and ranking simply prefers whichever domain matches the brand token. Onboarding a manufacturer that has never been seen requires zero code and zero configuration.</li>
+      <li><strong>The source policy is a deny-list, not an allow-list.</strong> This is the deliberate choice that makes new manufacturers work by default: any legitimate domain is permitted unless it is a known marketplace. An allow-list would require curation for every new vendor and would silently drop unknown ones.</li>
+      <li><strong>Brand resolution is evidence-driven.</strong> Brands are recovered from the product text rather than from a maintained brand dictionary, so an unfamiliar brand resolves on its first encounter.</li>
+      <li class="note flag" style="list-style:none;margin-left:-1.15rem"><strong>The honest caveat.</strong> Category classification is the part that does need attention as the catalog widens &mdash; it is keyword-driven, so a genuinely new product category needs rules added. It is an isolated lookup table rather than logic threaded through the codebase, and the embedding-based replacement in the roadmap removes the limitation. Say this before a judge finds it.</li>
+    </ul>
+
+    <h3>Different document formats</h3>
+    <ul>
+      <li><strong>Extraction is deliberately two steps: format &rarr; text, then text &rarr; facts.</strong> Only the first step knows about file formats. Adding one means writing a reader that returns a string; the prompt, the normalizer, the validator and the exporter are untouched.</li>
+      <li><strong>Shipping today:</strong> PDF via pypdf and HTML via BeautifulSoup, with content-type detection choosing the reader automatically.</li>
+      <li><strong>The same seam accommodates</strong> DOCX, XLSX specification tables, and OCR for scanned datasheets &mdash; all common in industrial supply, all just another reader.</li>
+      <li><strong>Failures are contained.</strong> An unreadable document is logged with its reason and the product falls back to supplier text rather than crashing the run, so one corrupt PDF in ten thousand costs one product's enrichment, not the batch.</li>
+    </ul>
+
+    <h3>Continuous product updates</h3>
+    <ul>
+      <li><strong>Re-runs can be selective, and the score decides which.</strong> Products already sitting green with high confidence need no reprocessing. Re-run the amber and red tiers, and anything whose source document has changed. The quality score is already the prioritisation signal &mdash; no separate scheduling logic is needed.</li>
+      <li><strong>Change is detectable.</strong> Retrieval writes a timestamped log with the source URL and local file path for every document, so a later run can compare against what it fetched before and re-extract only where the source actually moved.</li>
+      <li><strong>The delivery format already carries update semantics.</strong> Its <span class="mono">Action_Code</span> column distinguishes an inserted record from an updated one, so downstream systems can consume deltas rather than full reloads.</li>
+      <li><strong>New supplier columns do not require a release.</strong> Because the output schema is read from the client's sheet each run, a revised delivery format is picked up automatically on the next run.</li>
+    </ul>
+
+    <p class="pull">Stateless per product, deny-list not allow-list, and a format seam one function wide. Those three choices are the whole scalability answer.</p>
+  </section>
+
+  <footer>
+    <span>UNILOG &mdash; INDUSTRIAL PIM ENGINE</span>
+    <span>ANSWERS WRITTEN FROM THE WORKING CODEBASE</span>
+  </footer>
+
+</div>

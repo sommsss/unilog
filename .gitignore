@@ -13,6 +13,7 @@ __pycache__/
 logs/
 data/intermediate/
 data/output/
+data/jobs/
 
 # Third-party manufacturer documents fetched by Stage 3 — not ours to redistribute
 data/retrieved_documents/

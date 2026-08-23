@@ -452,10 +452,10 @@
   }
 
   /* ── run controls ───────────────────────────────────────────────────── */
-  .controls { display: flex; gap: .6rem; align-items: stretch; }
+  .runbox { display: flex; flex-direction: column; gap: .6rem; }
+  .controls { display: grid; grid-template-columns: 1fr 1fr; gap: .6rem; }
 
   .ctl {
-    flex: 1 1 auto;
     min-width: 0;
     border-radius: 11px;
     padding: .55rem .85rem .6rem;
@@ -488,9 +488,9 @@
   .ctl select option { background: #14141A; color: var(--white); }
 
   .run {
-    flex: none;
+    width: 100%;
     border-radius: 11px;
-    padding: .7rem 1.3rem;
+    padding: .75rem 1.3rem;
     font-family: var(--body);
     font-size: .88rem;
     font-weight: 500;
@@ -610,8 +610,7 @@
   .dl.primary::before { opacity: 0; }
 
   @media (max-width: 880px) {
-    .controls { flex-direction: column; }
-    .run { width: 100%; }
+    .controls { grid-template-columns: 1fr; }
 
     .hero-body { grid-template-columns: 1fr; align-items: start; }
     .hero { min-height: 0; padding-bottom: 3rem; }
@@ -664,21 +663,30 @@
           </span>
         </label>
 
-        <div class="controls">
-          <label class="ctl surf" for="limit">
-            <span class="ctl-l">BATCH SIZE</span>
-            <select id="limit">
-              <option value="5">5 products</option>
-              <option value="10">10 products</option>
-              <option value="20" selected>20 products</option>
-              <option value="50">50 products</option>
-              <option value="100">100 products</option>
-              <option value="200">200 products</option>
-              <option value="300">300 products</option>
-              <option value="1000">1000 products</option>
-              <option value="0">All products</option>
-            </select>
-          </label>
+        <div class="runbox">
+          <div class="controls">
+            <label class="ctl surf" for="limit">
+              <span class="ctl-l">BATCH SIZE</span>
+              <select id="limit">
+                <option value="5">5 products</option>
+                <option value="10">10 products</option>
+                <option value="20" selected>20 products</option>
+                <option value="50">50 products</option>
+                <option value="100">100 products</option>
+                <option value="200">200 products</option>
+                <option value="300">300 products</option>
+                <option value="1000">1000 products</option>
+                <option value="0">All products</option>
+              </select>
+            </label>
+            <label class="ctl surf" for="mode">
+              <span class="ctl-l">EXTRACTION</span>
+              <select id="mode">
+                <option value="1" selected>AI extraction</option>
+                <option value="0">No AI &mdash; dry run</option>
+              </select>
+            </label>
+          </div>
           <button class="run surf" type="button" id="runBtn" disabled>Run pipeline</button>
         </div>
 
@@ -727,6 +735,8 @@
         <tbody id="oBody"></tbody>
       </table>
     </div>
+
+    <p class="run-msg" id="outcomeNote"></p>
 
     <div class="actions">
       <a class="dl surf primary" id="dlCatalog" href="#" download>Download master catalog</a>
@@ -1076,6 +1086,7 @@
 
   var runBtn = document.getElementById("runBtn");
   var limitSel = document.getElementById("limit");
+  var modeSel = document.getElementById("mode");
   var runPanel = document.getElementById("runPanel");
   var outcome = document.getElementById("outcome");
   var bar = document.getElementById("bar");
@@ -1111,10 +1122,16 @@
     runBtn.classList.toggle("armed", !!file);
   }
 
+  function useAI() { return modeSel.value === "1"; }
+
   function estimate() {
     var n = parseInt(limitSel.value, 10);
     if (n === 0) n = parsedRows || 0;
     if (!n) return "";
+    if (!useAI()) {
+      // A dry run makes no API calls, so nothing paces it — it is seconds.
+      return n + " products · no API calls, identity and taxonomy only";
+    }
     // Extraction is paced at 15 requests/minute, so ~4 s per product.
     return n + " products · about " + clock(n * 4) + " at 15 req/min";
   }
@@ -1127,6 +1144,7 @@
   }
 
   limitSel.addEventListener("change", refreshCaption);
+  modeSel.addEventListener("change", refreshCaption);
 
   function fail(message) {
     runPanel.hidden = false;
@@ -1222,6 +1240,11 @@
         document.getElementById("dlCatalog").href = "/api/download/" + jobId;
         document.getElementById("dlReport").href = "/api/report/" + jobId;
 
+        document.getElementById("outcomeNote").textContent = s.facts === 0
+          ? "Dry run: no facts were extracted, so every product routed to FAILED and the "
+            + "catalog carries identity and taxonomy only. Re-run with AI extraction to fill specs."
+          : s.facts + " facts published across " + s.rows + " rows in the 252-column delivery format.";
+
         outcome.hidden = false;
         outcome.scrollIntoView({ behavior: reduced ? "auto" : "smooth", block: "nearest" });
         runBtn.disabled = false;
@@ -1238,6 +1261,7 @@
     var form = new FormData();
     form.append("file", selectedFile);
     form.append("limit", limitSel.value);
+    form.append("use_ai", useAI() ? "true" : "false");
 
     runBtn.disabled = true;
     runBtn.textContent = "Running…";
